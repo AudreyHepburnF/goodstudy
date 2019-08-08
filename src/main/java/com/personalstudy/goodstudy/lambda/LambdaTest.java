@@ -1,12 +1,15 @@
 package com.personalstudy.goodstudy.lambda;
 
+import com.personalstudy.goodstudy.base.Person;
+import com.personalstudy.goodstudy.base.User;
 import org.junit.Test;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 /**
  * @author : <a href="mailto:congyaozhu@ebnew.com">congyaozhu</a>
@@ -61,10 +64,81 @@ public class LambdaTest {
         }
         return filterList;
     }
+    // 内置核心函数式接口之一：Predicate
     @Test
     public void test3(){
         List<String> list = Arrays.asList("北京" , "南京" , "天津" , "普京" , "吴京");
         List<String> str = filterString(list, s -> s.contains("津"));
         System.out.println(str);
+    }
+
+    // 方法引用：消费型(非静态方法)
+    @Test
+    public void test4(){
+        PrintStream out = System.out;
+        Consumer<String> con = out ::print;
+        con.accept("今天气温不错");
+    }
+
+    // 方法引用： 供给型(非静态方法)
+    @Test
+    public void test5(){
+        Person person = new Person();
+        person.setName("张三");
+        Supplier sup =  person ::getName;
+        System.out.println(sup.get());
+    }
+
+    @Test
+    public void test6(){
+        Comparator<Integer> comp = Integer::compareTo;
+        System.out.println(comp.compare(10, 20));
+
+        System.out.println("****************************");
+
+        BiPredicate<String , String> biPredicate = String::equals;
+        System.out.println(biPredicate.test("abc", "abd"));
+    }
+
+    //Function中的R apply(T t)
+    //Math中的Long round(Double d)
+    @Test
+    public void test7() {
+        Function<Double , Long> function = Math::round;
+        System.out.println(function.apply(12.3));
+        System.out.println(function.apply(12.6));
+
+        System.out.println("***********************");
+        Function<Double , Long> function2 = d -> Math.round(d);
+        System.out.println(function2.apply(17.5));
+    }
+
+    // Function中的R apply(T t)
+    // Employee中的String getName();
+    @Test
+    public void test8() {
+        Person person = new Person();
+        person.setName("李四");
+        Function<Person , String> fun = Person::getName;
+        System.out.println(fun.apply(person));
+    }
+
+    // 构造器引用
+    @Test
+    public void test9(){
+        Supplier<Person> sup = Person::new;
+        System.out.println(sup.get());
+
+        System.out.println("**********************");
+
+        BiFunction< Integer , String , User > fun = User::new;
+        System.out.println(fun.apply(15, "张三"));
+    }
+
+    // 数组引用
+    @Test
+    public void test10(){
+        Function<Integer , String[]> fun = String[] :: new;
+        System.out.println(Arrays.toString(fun.apply(5)));
     }
 }

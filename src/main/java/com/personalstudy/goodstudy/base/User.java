@@ -6,17 +6,15 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author : <a href="mailto:congyaozhu@ebnew.com">congyaozhu</a>
- * @Date : Created in  11:35 2019-08-07
+ * @Date : Created in  14:49 2019-08-08
  * @Description :
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Person {
-
-    private String name;
+@NoArgsConstructor
+public class User {
 
     private int age;
 
-    public String sex;
+    private String name;
 }

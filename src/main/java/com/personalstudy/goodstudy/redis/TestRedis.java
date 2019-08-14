@@ -14,7 +14,7 @@ public class TestRedis {
     public static void main(String[] args) {
         Jedis jedis = new Jedis("152.136.16.111", 6379);
         System.out.println(jedis.set("xyl", "123"));
-//        System.out.println(jedis.get("xyl"));
+        System.out.println(jedis.get("xyl"));
     }
 
     @Test

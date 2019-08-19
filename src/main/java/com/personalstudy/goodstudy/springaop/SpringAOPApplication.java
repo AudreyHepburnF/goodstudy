@@ -2,6 +2,7 @@ package com.personalstudy.goodstudy.springaop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  * @author : <a href="mailto:congyaozhu@ebnew.com">congyaozhu</a>
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description :
  */
 @SpringBootApplication
+@EnableConfigurationProperties
 public class SpringAOPApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringAOPApplication.class, args);

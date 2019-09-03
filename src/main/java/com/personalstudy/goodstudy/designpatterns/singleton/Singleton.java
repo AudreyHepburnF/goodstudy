@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.designpatterns.Singleton;
+package com.personalstudy.goodstudy.designpatterns.singleton;
 
 /**
  * 枚举实现单例模式

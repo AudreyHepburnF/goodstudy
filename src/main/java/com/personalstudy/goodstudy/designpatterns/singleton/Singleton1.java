@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.designpatterns.Singleton;
+package com.personalstudy.goodstudy.designpatterns.singleton;
 
 /**
  * 单例模式
@@ -52,14 +52,9 @@ public class Singleton1 {
      *      1.为singleton分配内存空间
      *      2.初始化singleton
      *      3.将singleton指向分配的内存地址
-     *
-     * volatile关键字：
-     *      作用：禁止 JVM 的指令重排，保证在多线程环境下也能正常运行。
-     *      JVM具有指令重排的特性，多线程情况下，执行顺序可能发生变化，导致未初始化就返回的情况
-     *
      * @return
      */
-    private volatile static Singleton1 uniqueInstance;
+
     public static synchronized Singleton1 getSingleton1TwoSyn(){
         if(singleton == null){
             synchronized (Singleton1.class){
@@ -72,6 +67,13 @@ public class Singleton1 {
     }
 
     /**
+    *  volatile关键字：
+    *  作用：禁止 JVM 的指令重排，保证在多线程环境下也能正常运行。
+    *  JVM具有指令重排的特性，多线程情况下，执行顺序可能发生变化，导致未初始化就返回的情况
+     */
+    private volatile static Singleton1 uniqueInstance;
+
+    /**
      * 静态内部类实现
      * 优点：当Singleton类加载时，静态内部类SingletonHolder还没有被加载进内存，只有当调用getUniqueInstance()方法从而触发SingletonHolder.
      * INSTANCE时SingletonHolder才会被加载，此时初始化INSTANCE是你，并且JVM能确保INSTANCE只被实例化一次
@@ -79,6 +81,7 @@ public class Singleton1 {
     private static class SingletonHolder{
         private static final Singleton1 INSTANCE = new Singleton1();
     }
+
     public static Singleton1 getUniqueInstance(){
         return SingletonHolder.INSTANCE;
     }

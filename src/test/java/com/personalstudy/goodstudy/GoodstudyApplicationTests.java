@@ -17,8 +17,8 @@ public class GoodstudyApplicationTests {
 
     @Test
     public void testProperties() {
-        System.out.println("名称：" + blogProperties.getName());
-        System.out.println("标题：" + blogProperties.getTitle());
+//        System.out.println("名称：" + blogProperties.getName());
+//        System.out.println("标题：" + blogProperties.getTitle());
 
     }
 

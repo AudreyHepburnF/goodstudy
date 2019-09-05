@@ -15,9 +15,12 @@ public class NormalConsumer {
 
         // 队列名
         String queueName = "forcuserror";
+        // 声明队列
         channel.queueDeclare(queueName , false , false , false , null);
 
+        // 定义路由键
         String routekey = "error";
+        // 绑定队列
         channel.queueBind(queueName , DirectProducer.EXCHANGE_NAME , routekey);
 
         System.out.println("waiting for message ... ");
@@ -29,6 +32,7 @@ public class NormalConsumer {
                 System.out.println("Receive["+ envelope.getRoutingKey() +"]" + message);
             }
         };
+        // 消费消息
         channel.basicConsume(queueName, true,consumer);
     }
 }

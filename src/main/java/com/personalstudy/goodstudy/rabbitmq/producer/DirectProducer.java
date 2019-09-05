@@ -14,13 +14,16 @@ public class DirectProducer {
     public static void main(String[] args) {
         try {
             Connection connection = ConnectionUtil.getConnection();
+            // 创建管道
             Channel channel = connection.createChannel();
+            // 设置交换机参数
             channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
             String[] servertities = {"error" , "warning" , "info"};
             for (int i = 0; i < servertities.length; i++) {
                 String routing = servertities[i];
                 String msg = "Hello RabbitMQ" + i;
+                // 发布消息
                 channel.basicPublish(EXCHANGE_NAME , routing , null , msg.getBytes());
             }
 

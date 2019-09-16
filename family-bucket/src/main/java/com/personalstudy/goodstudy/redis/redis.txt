@@ -1,0 +1,24 @@
+解析redis的set操作
+redis.clients.jedis.Jedis.set(java.lang.String, java.lang.String)
+    >redis.clients.jedis.Client.set(java.lang.String, java.lang.String)
+        >redis.clients.jedis.BinaryClient.set(byte[], byte[])
+            >java.lang.String.getBytes(java.lang.String)：将key，value转换为字节数组
+            redis.clients.jedis.Protocol
+            >redis.clients.jedis.Connection.getStatusCodeReply:获取操作状态，校验并返回
+
+解析redis的get操作
+    会调用sendCommand方法
+    redis.clients.jedis.Connection.sendCommand(redis.clients.jedis.Protocol.Command, java.lang.String...)
+        Protocol.Command中定义了所有的redis命令
+            ping, set, get, quit, exists, del, type, flushdb, keys, randomkey, rename, renamenx, renamex, dbsize, expire, expireat, ttl, select, move, flushall, getset, mget, setnx, setex, mset, msetnx, decrby, decr, incrby, incr, append, substr, hset, hget, hsetnx, hmset, hmget, hincrby, hexists, hdel, hlen, hkeys, hvals, hgetall, rpush, lpush, llen, lrange, ltrim, lindex, lset, lrem, lpop, rpop, rpoplpush, sadd, smembers, srem, spop, smove, scard, sismember, sinter, sinterstore, sunion, sunionstore, sdiff, sdiffstore, srandmember, zadd, zrange, zrem, zincrby, zrank, zrevrank, zrevrange, zcard, zscore, multi, discard, exec, watch, unwatch, sort, blpop, brpop, auth, subscribe, publish, unsubscribe, psubscribe, punsubscribe, pubsub, zcount, zrangebyscore, zrevrangebyscore, zremrangebyrank, zremrangebyscore, zunionstore, zinterstore, zlexcount, zrangebylex, zrevrangebylex, zremrangebylex, save, bgsave, bgrewriteaof, lastsave, shutdown, info, monitor, slaveof, config, strlen, sync, lpushx, persist, rpushx, echo, linsert, debug, brpoplpush, setbit, getbit, bitpos, setrange, getrange, eval, evalsha, script, slowlog, object, bitcount, bitop, sentinel, dump, restore, pexpire, pexpireat, pttl, incrbyfloat, psetex, client, time, migrate, hincrbyfloat, scan, hscan, sscan, zscan, wait, cluster, asking, pfadd, pfcount, pfmerge, readonly, geoadd, geodist, geohash, geopos, georadius, georadiusbymember, bitfield;
+        >redis.clients.jedis.Connection.sendCommand(redis.clients.jedis.Protocol.Command, byte[]...)    将String的key转换为字节数组
+            >redis.clients.jedis.Protocol.sendCommand(redis.clients.util.RedisOutputStream, byte[], byte[]...)
+                添加RESP协议说明
+                For Simple Strings the first byte of the reply is "+"
+                For Errors the first byte of the reply is "-"
+                For Integers the first byte of the reply is ":"
+                For Bulk Strings the first byte of the reply is "$"
+                For Arrays the first byte of the reply is "*"
+
+                >redis.clients.jedis.Connection.getBulkReply
+                    >redis.clients.util.SafeEncoder.encode(byte[])  对结果进行encode

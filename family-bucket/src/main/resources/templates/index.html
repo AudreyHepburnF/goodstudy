@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<script type="text/javascript" src="../pdfobject.js"></script>
+<html lang="en" xmlns%3Ath="http://www.thymeleaf.org">
+<script type="text/javascript" src="/pdfobject.js"></script>
+<!--<script src="webjars/jquery/3.4.1/dist/jquery.min.js"></script>-->
 <body>
 <h1>嘻嘻哈哈</h1>
 <div id="pdfDiv" style="width:100%;height:620px !important;"></div>
 
 <script type="text/javascript">
-    PDFObject.embed("/demo/testPDF", "#pdfDiv");
+    PDFObject.embed("/demo/testPDF?fileNames=1.pdf", "#pdfDiv");
 </script>
 </body>
 </html>

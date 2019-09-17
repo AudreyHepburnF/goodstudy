@@ -1,6 +1,8 @@
 package com.personalstudy.goodstudy;
 
 import com.personalstudy.goodstudy.base.Employee;
+import com.personalstudy.goodstudy.base.Person1;
+
 import java.lang.reflect.Field;
 
 /**
@@ -39,5 +41,9 @@ public class Test1 {
             System.out.println(f.getName());
         }
         System.out.println();
+    }
+
+    public static void method3(){
+        Person1 person = new Person1.Builder("zs" , 10).build();
     }
 }

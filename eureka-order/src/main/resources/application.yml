@@ -1,3 +1,5 @@
+server:
+  port: 8100
 eureka:
   client:
     service-url:
@@ -6,6 +8,4 @@ eureka:
     register-with-eureka: true
 spring:
   application:
-    name: eureka-client
-server:
-  port: 8080
+    name: eureka-order

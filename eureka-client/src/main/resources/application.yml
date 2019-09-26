@@ -1,11 +1,19 @@
+spring:
+  application:
+    name: eureka-client
+server:
+  port: 8080
+
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8762/eureka/
     fetch-registry: true
     register-with-eureka: true
-spring:
-  application:
-    name: eureka-client
-server:
-  port: 8080
+  # 心跳检测与续约时间
+  # 测试时，将值设置小写，保证服务不可用时，及时剔除
+  instance:
+    # Eureka服务端在收到最后一次心跳检测之后等待的时间上限，单位为秒，超过则剔除
+    lease-expiration-duration-in-seconds: 2
+    # Eureka向客户端发送心跳检测的时间间隔，默认为秒
+    lease-renewal-interval-in-seconds: 1

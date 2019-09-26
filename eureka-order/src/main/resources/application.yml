@@ -6,6 +6,8 @@ eureka:
       defaultZone: http://127.0.0.1:8762/eureka/
     fetch-registry: true
     register-with-eureka: true
+
 spring:
   application:
     name: eureka-order
+

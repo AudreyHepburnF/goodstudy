@@ -1,0 +1,21 @@
+server:
+  port: 9100
+# 配置服务名称：必须与git仓库中 config 名称前缀相同
+# 例如：testconfig-dev.properties
+spring:
+  application:
+    name: testconfig
+# cloud profile 环境
+  cloud:
+    config:
+      profile: dev
+      # 开启读取权限
+      discovery:
+        enabled: true
+        # 读取服务路径
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      # eureka服务地址
+      defaultZone: http://127.0.0.1:8761/eureka/

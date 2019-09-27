@@ -1,0 +1,23 @@
+server:
+  port: 9000
+eureka:
+  client:
+    service-url:
+      # eureka\u670D\u52A1\u6CE8\u518C\u5730\u5740
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+  instance:
+    hostname: 127.0.0.1
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # config \u5730\u5740
+          uri: https://github.com/AudreyHepburnF/springcloud-config.git
+          # \u641C\u7D22\u8DEF\u5F84
+          search-paths:
+            - config
+      # \u5206\u652F
+      label: master

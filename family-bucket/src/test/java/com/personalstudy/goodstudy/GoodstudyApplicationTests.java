@@ -1,6 +1,6 @@
 package com.personalstudy.goodstudy;
 
-import com.personalstudy.goodstudy.com.personalstudy.goodstudy.spring_boot.BlogProperties;
+import com.personalstudy.goodstudy.base.BlogProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

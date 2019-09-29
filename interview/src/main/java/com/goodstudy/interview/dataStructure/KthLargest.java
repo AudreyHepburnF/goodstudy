@@ -1,4 +1,4 @@
-package com.goodstudy.interview.volatiledemo;
+package com.goodstudy.interview.dataStructure;
 
 import java.util.PriorityQueue;
 

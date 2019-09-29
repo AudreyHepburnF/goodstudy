@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.dataStructure;
+package com.goodstudy.interview.dataStructure;
 
 /**
  * 基于数组实现的顺序栈

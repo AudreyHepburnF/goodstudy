@@ -14,6 +14,13 @@
     <packaging>pom</packaging>
     <name>goodstudy</name>
     <description>Demo project for Spring Boot</description>
+    <modules>
+        <module>demo-spring</module>
+        <module>dubbo-interface-study</module>
+        <module>dubbo-provider-study</module>
+        <module>dubbo-consumer-study</module>
+        <module>spring-annotation</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
     </properties>

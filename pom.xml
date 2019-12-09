@@ -13,14 +13,26 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>goodstudy</name>
-    <description>Demo project for Spring Boot</description>
     <modules>
+        <module>design-pattern</module>
+        <module>elasticsearch-project</module>
+        <module>elasticsearch-spring</module>
+        <module>eureka8761</module>
+        <module>eureka8762</module>
+        <module>eureka-client</module>
+        <module>eureka-order</module>
+        <module>family-bucket</module>
+        <module>interview</module>
+        <module>spring-cloud-config-client</module>
+        <module>spring-cloud-config-server</module>
+        <module>test-docker</module>
         <module>demo-spring</module>
         <module>dubbo-interface-study</module>
         <module>dubbo-provider-study</module>
         <module>dubbo-consumer-study</module>
         <module>spring-annotation</module>
     </modules>
+    <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -98,6 +110,11 @@
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
     </dependencies>

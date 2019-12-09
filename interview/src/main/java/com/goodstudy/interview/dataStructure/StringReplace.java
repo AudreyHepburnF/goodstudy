@@ -25,7 +25,7 @@ public class StringReplace {
         int newNumIndex = newNum -1; // 新字符串的最大索引
         str.setLength(newNum);
         // 遍历原字符串(递减遍历)
-        for(;oldNumIndex>=0 && oldNumIndex<newNum ; --oldNumIndex){
+        for(;oldNumIndex>0 && oldNumIndex<newNum ; --oldNumIndex){
             // 原字符串为空，进行反向操作新字符串
             if(str.charAt(oldNumIndex) == ' '){
                 str.setCharAt(newNumIndex--, '0');

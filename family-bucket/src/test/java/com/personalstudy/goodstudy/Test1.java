@@ -1,7 +1,12 @@
 package com.personalstudy.goodstudy;
 
+import com.alibaba.dubbo.config.ServiceConfig;
 import com.personalstudy.goodstudy.base.Employee;
 import com.personalstudy.goodstudy.base.Person1;
+import com.personalstudy.goodstudy.config.MyConfig;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.lang.reflect.Field;
 
@@ -45,5 +50,23 @@ public class Test1 {
 
     public static void method3(){
         Person1 person = new Person1.Builder("zs" , 10).build();
+    }
+
+    public void method4(){
+        ServiceConfig serviceConfig = new ServiceConfig();
+    }
+
+    private ApplicationContext act = new AnnotationConfigApplicationContext(MyConfig.class);
+
+    @Test
+    public void test1(){
+        printDefinitionName(act);
+    }
+
+    public void printDefinitionName(ApplicationContext act){
+        String[] names = act.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
     }
 }

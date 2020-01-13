@@ -1,6 +1,7 @@
 package com.goodstudy.interview.cas;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
@@ -8,17 +9,17 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  */
 public class ABADemo {
 
-    static AtomicInteger atomicInteger = new AtomicInteger(100);
+    static AtomicReference<Integer> atomicInteger = new AtomicReference(100);
     static AtomicStampedReference atomicStampedReference = new AtomicStampedReference(100, 1);
 
     public static void main(String[] args) {
 
-        System.out.println("=============ABA问题=============");
+        System.out.println("=============ABA问题的产生=============");
 
         new Thread(() -> {
             atomicInteger.compareAndSet(100, 101);
             atomicInteger.compareAndSet(101, 100);
-            System.out.println(Thread.currentThread().getName() + "current value : " + atomicInteger.get());
+            System.out.println(Thread.currentThread().getName() + "\t current value : " + atomicInteger.get());
         },"t1").start();
 
         new Thread(() -> {
@@ -32,6 +33,8 @@ public class ABADemo {
         },"t2").start();
 
 
+        try{ TimeUnit.SECONDS.sleep(3); } catch ( InterruptedException e ) { e.printStackTrace(); }
+        
         System.out.println("=============ABA问题解决方式=============");
         // 使用AtomicStampedReference进行版本控制
         new Thread(() -> {

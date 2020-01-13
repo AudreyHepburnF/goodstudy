@@ -2,6 +2,10 @@ package com.goodstudy.interview.cas;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * CAS是什么？ compareAndSet
+ *  比较并交换
+ */
 public class CASDemo {
 
     public static void main(String[] args) {

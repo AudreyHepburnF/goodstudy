@@ -43,7 +43,7 @@ public class CountDownLatchDemo {
      * @throws InterruptedException
      */
     private static void afterCountDownLatch() throws InterruptedException {
-        // 必须赋初始值，并且是递减
+        // 必须赋初始值，并且递减
         CountDownLatch count = new CountDownLatch(6);
         for (int i = 1 ; i <= 6 ; i++) {
             new Thread(() -> {

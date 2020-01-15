@@ -73,7 +73,7 @@ class ShareData{
 }
 
 /**
- * 一个初始值为0的变量 两个线程交替操作 一个加1 一个减1来5轮
+ * 模拟生产者消费者执行： 一个初始值为0的变量 两个线程交替操作 一个加1 一个减1来5轮
  */
 public class ProdConsumerTraditionDemo {
 

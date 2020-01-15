@@ -1,4 +1,4 @@
-package com.goodstudy.interview.lock;
+package com.goodstudy.interview.juc;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

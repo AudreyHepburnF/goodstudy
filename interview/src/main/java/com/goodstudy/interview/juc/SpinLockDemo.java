@@ -1,4 +1,4 @@
-package com.goodstudy.interview.lock;
+package com.goodstudy.interview.juc;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;

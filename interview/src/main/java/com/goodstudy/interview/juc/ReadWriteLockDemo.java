@@ -1,4 +1,4 @@
-package com.goodstudy.interview.lock;
+package com.goodstudy.interview.juc;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -18,6 +18,7 @@ class MyDate{
         number++;
     }
 
+    // 引入juc包下的原子Integer类，解决volatile无法保证原子性问题
     AtomicInteger atomicInteger = new AtomicInteger();
 
     public void addAtomic(){

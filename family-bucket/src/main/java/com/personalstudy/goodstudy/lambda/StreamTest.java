@@ -4,10 +4,7 @@ import com.personalstudy.goodstudy.base.Employee;
 import com.personalstudy.goodstudy.base.EmployeeData;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -65,7 +62,7 @@ public class StreamTest {
         employees.stream().map(Employee::getName).filter(name -> name.length()<3).forEach(System.out::println);
 
         System.out.println("*****************************\n");
-        // flagMap
+        // flatMap
         list.stream().flatMap(StreamTest::fromStringToStream).forEach(System.out::println);
 
         System.out.println("*****************************\n");
@@ -161,4 +158,54 @@ public class StreamTest {
         }
         return list.stream();
     }
+
+    @Test
+    public void test8(){
+        List<Employee> employees = EmployeeData.getEmployees();
+
+        // 根据年龄排序，如果年龄相同则根据薪资排序
+        employees.stream().sorted((x , y ) -> {
+            if(x.getAge().equals(y.getAge())){
+                return -x.getSalary().compareTo(y.getSalary());
+            }else{
+                return x.getAge().compareTo(y.getAge());
+            }
+        }).forEach(System.out::println);
+
+    }
+
+    // 使用reduce求所有员工的薪资
+    @Test
+    public void test9(){
+        List<Employee> employees = EmployeeData.getEmployees();
+        Optional<Double> reduce = employees.stream()
+                .map(x -> x.getSalary())
+                .reduce(Double::sum);
+        System.out.println(reduce.get());
+    }
+
+    // collect : 收集
+    @Test
+    public void test10(){
+        List<Employee> employees = EmployeeData.getEmployees();
+        employees.add(new Employee(5, "马云", 25, 66666.66));
+        System.out.println("-------List------");
+        List<String> toList = employees.stream()
+                .map(x -> x.getName())
+                .collect(Collectors.toList());
+        System.out.println(toList);
+
+        System.out.println("-------Set------");
+        Set<String> toSet = employees.stream()
+                .map(x -> x.getName())
+                .collect(Collectors.toSet());
+        System.out.println(toSet);
+
+        System.out.println("-------HashSet------");
+        HashSet<String> toHashSet = employees.stream()
+                .map(x -> x.getName())
+                .collect(Collectors.toCollection(HashSet::new));
+        System.out.println(toHashSet);
+    }
+
 }

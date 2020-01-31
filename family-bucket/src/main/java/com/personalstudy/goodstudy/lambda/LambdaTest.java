@@ -80,12 +80,26 @@ public class LambdaTest {
         con.accept("今天气温不错");
     }
 
+    /**
+     * 四大基础接口简单demo
+     */
     @Test
     public void test41(){
+        System.out.println("----------------Consumer接口---------------");
         consumerMethod("今天是初七" , x -> System.out.println(x));
+
+        System.out.println("----------------Supplier接口---------------");
         List<Integer> list = supplierMethod(10, () -> (int)(Math.random() * 100));
         System.out.println(list);
+
+        System.out.println("----------------Function接口---------------");
         System.out.println(functionMethod("   zhangsan   \t\t\t123   465" , x -> x.trim().toUpperCase()));
+
+        System.out.println("----------------Predicate接口---------------");
+        List<String> strList = Arrays.asList("www" , "ok" , "qwer" , "zhangsan" , "list");
+        // 过滤出集合中长度大于3的数据
+        List<String> stringList = predicateMethod(strList, x -> x.length() > 3);
+        System.out.println(stringList);
     }
 
     public void consumerMethod(String str , Consumer<String> con){
@@ -106,6 +120,15 @@ public class LambdaTest {
         return function.apply(str);
     }
 
+    public List<String> predicateMethod(List<String> list , Predicate<String> pre){
+        List<String> strList = new ArrayList<>();
+        for (String str : list) {
+            if (pre.test(str)){
+                strList.add(str);
+            }
+        }
+        return strList;
+    }
     // 方法引用： 供给型(非静态方法)
     @Test
     public void test5(){

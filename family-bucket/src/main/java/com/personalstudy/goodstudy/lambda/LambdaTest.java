@@ -80,6 +80,32 @@ public class LambdaTest {
         con.accept("今天气温不错");
     }
 
+    @Test
+    public void test41(){
+        consumerMethod("今天是初七" , x -> System.out.println(x));
+        List<Integer> list = supplierMethod(10, () -> (int)(Math.random() * 100));
+        System.out.println(list);
+        System.out.println(functionMethod("   zhangsan   \t\t\t123   465" , x -> x.trim().toUpperCase()));
+    }
+
+    public void consumerMethod(String str , Consumer<String> con){
+         con.accept(str);
+
+    }
+
+    public List<Integer> supplierMethod(int num , Supplier<Integer> supplier){
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            Integer integer = supplier.get();
+            list.add(integer);
+        }
+        return list;
+    }
+
+    public String functionMethod(String str , Function<String , String> function){
+        return function.apply(str);
+    }
+
     // 方法引用： 供给型(非静态方法)
     @Test
     public void test5(){

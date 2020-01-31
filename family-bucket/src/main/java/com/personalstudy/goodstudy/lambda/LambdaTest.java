@@ -1,5 +1,7 @@
 package com.personalstudy.goodstudy.lambda;
 
+import com.personalstudy.goodstudy.base.Person;
+import com.personalstudy.goodstudy.base.User;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -7,10 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiPredicate;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 /**
  * @author : <a href="mailto:congyaozhu@ebnew.com">congyaozhu</a>
@@ -84,10 +83,10 @@ public class LambdaTest {
     // 方法引用： 供给型(非静态方法)
     @Test
     public void test5(){
-//        Person person = new Person();
-//        person.setName("张三");
-//        Supplier sup =  person ::getName;
-//        System.out.println(sup.get());
+        Person person = new Person();
+        person.setName("张三");
+        Supplier sup =  person ::getName;
+        System.out.println(sup.get());
     }
 
     @Test
@@ -118,22 +117,22 @@ public class LambdaTest {
     // Employee中的String getName();
     @Test
     public void test8() {
-//        Person person = new Person();
-//        person.setName("李四");
-//        Function<Person , String> fun = Person::getName;
-//        System.out.println(fun.apply(person));
+        Person person = new Person();
+        person.setName("李四");
+        Function<Person , String> fun = Person::getName;
+        System.out.println(fun.apply(person));
     }
 
     // 构造器引用
     @Test
     public void test9(){
-//        Supplier<Person> sup = Person::new;
-//        System.out.println(sup.get());
-//
-//        System.out.println("**********************");
-//
-//        BiFunction< Integer , String , User > fun = User::new;
-//        System.out.println(fun.apply(15, "张三"));
+        Supplier<Person> sup = Person::new;
+        System.out.println(sup.get());
+
+        System.out.println("**********************");
+
+        BiFunction< Integer , String , User > fun = User::new;
+        System.out.println(fun.apply(15, "张三"));
     }
 
     // 数组引用

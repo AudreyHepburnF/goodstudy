@@ -4,8 +4,11 @@ import com.personalstudy.goodstudy.base.Employee;
 import com.personalstudy.goodstudy.base.EmployeeData;
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /**
@@ -206,6 +209,18 @@ public class StreamTest {
                 .map(x -> x.getName())
                 .collect(Collectors.toCollection(HashSet::new));
         System.out.println(toHashSet);
+    }
+
+    @Test
+    public void test11(){
+        Instant start = Instant.now();
+
+        long sum = LongStream.rangeClosed(0, 100000000000L)
+                .parallel()
+                .reduce(0, Long::sum);
+        Instant end = Instant.now();
+        System.out.println("求得结果为：" + sum +", 耗时：" + Duration.between(start, end).toMillis());
+
     }
 
 }

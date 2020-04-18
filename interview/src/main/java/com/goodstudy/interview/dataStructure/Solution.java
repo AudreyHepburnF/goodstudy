@@ -50,27 +50,27 @@ public class Solution {
      * @param n
      * @return
      */
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-
-        ListNode first = dummy;
-        ListNode second = dummy;
-
-        // first先移动n次，与second保留n个间隔
-        for (int i = 1; i <= n+1; i++) {
-            first = first.next;
-        }
-
-        // 判断first是否是尾节点
-        while (first != null){
-            first = first.next;
-            second = second.next;
-        }
-
-        // 将second的next节点与second.next.next节点关联
-        second.next = second.next.next;
-        return dummy.next;
-
-    }
+//    public ListNode removeNthFromEnd(ListNode head, int n) {
+//        ListNode dummy = new ListNode(0);
+//        dummy.next = head;
+//
+//        ListNode first = dummy;
+//        ListNode second = dummy;
+//
+//        // first先移动n次，与second保留n个间隔
+//        for (int i = 1; i <= n+1; i++) {
+//            first = first.next;
+//        }
+//
+//        // 判断first是否是尾节点
+//        while (first != null){
+//            first = first.next;
+//            second = second.next;
+//        }
+//
+//        // 将second的next节点与second.next.next节点关联
+//        second.next = second.next.next;
+//        return dummy.next;
+//
+//    }
 }

@@ -26,7 +26,7 @@ public class StreamTest {
 
     // 筛选与切片
     @Test
-    public void test2(){
+    public void test2() throws InterruptedException {
         List<Employee> employees = EmployeeData.getEmployees();
         Stream<Employee> stream = employees.stream();
         // 过滤薪资大于7000的员工
@@ -50,7 +50,13 @@ public class StreamTest {
         employees.add(new Employee(10010, "张三", 25, 5000));
         employees.add(new Employee(10010, "张三", 25, 5001));
         employees.stream().distinct().forEach(System.out::println);
+
+        employees.wait();
+        synchronized (employees){
+            employees.wait();
+        }
     }
+
 
     // 映射
     @Test

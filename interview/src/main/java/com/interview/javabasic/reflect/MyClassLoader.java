@@ -23,11 +23,11 @@ public class MyClassLoader extends ClassLoader {
 
     //用于加载类文件
     private byte[] loadClassData(String name) {
-        name = path + name + ".class";
+        classLoaderName = path + name + ".class";
         InputStream in = null;
         ByteArrayOutputStream out = null;
         try {
-            in = new FileInputStream(new File(name));
+            in = new FileInputStream(new File(classLoaderName));
             out = new ByteArrayOutputStream();
             int i = 0;
             while ((i = in.read()) != -1) {

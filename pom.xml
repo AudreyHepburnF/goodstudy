@@ -31,6 +31,7 @@
         <module>dubbo-provider-study</module>
         <module>dubbo-consumer-study</module>
         <module>spring-annotation</module>
+        <module>tuling-jvm</module>
     </modules>
     <description>Demo project for Spring Boot</description>
     <properties>

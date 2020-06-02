@@ -60,9 +60,6 @@ class MyResource {
  * Description
  * volatile/CAS/atomicInteger/BlockQueue/线程交互/原子引用
  * 阻塞队列版生产者消费者
- * @author veliger@163.com
- * @version 1.0
- * @date 2019-04-13 14:02
  **/
 public class ProdConsumerBlockQueueDemo {
     public static void main(String[] args) throws Exception {
@@ -91,9 +88,9 @@ public class ProdConsumerBlockQueueDemo {
         System.out.println("时间到,停止活动");
         myResource.stop();
 
-        ExecutorService executorService1 = Executors.newFixedThreadPool(5); // 一个线程池固定大小
-        ExecutorService executorService2 = Executors.newSingleThreadExecutor(); // 一个线程池一个处理
-        ExecutorService executorService3 = Executors.newCachedThreadPool(); // 一个线程池动态扩容处理
+//        ExecutorService executorService1 = Executors.newFixedThreadPool(5); // 一个线程池固定大小
+//        ExecutorService executorService2 = Executors.newSingleThreadExecutor(); // 一个线程池一个处理
+//        ExecutorService executorService3 = Executors.newCachedThreadPool(); // 一个线程池动态扩容处理
 
     }
 }

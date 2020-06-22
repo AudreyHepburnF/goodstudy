@@ -1,7 +1,5 @@
 package com.interview.javabasic.jvm.gc;
 
-import java.lang.ref.ReferenceQueue;
-
 public class Finalization {
     public static Finalization finalization;
     @Override
@@ -22,5 +20,15 @@ public class Finalization {
         }
         System.out.println("Second print: " + f);
         System.out.println(f.finalization);
+
+
+    }
+
+    private int value = 0;
+    public void write(int input ){
+        value = input ;
+    }
+    public int read(){
+        return value;
     }
 }

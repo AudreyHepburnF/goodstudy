@@ -28,6 +28,8 @@
         <module>test-docker</module>
         <module>demo-spring</module>
         <module>dubbo-interface-study</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-consumer</module>
         <module>dubbo-provider-study</module>
         <module>dubbo-consumer-study</module>
         <module>spring-annotation</module>

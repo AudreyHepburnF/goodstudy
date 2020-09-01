@@ -13,6 +13,34 @@ class MyResource {
      */
     private AtomicInteger atomicInteger = new AtomicInteger();
 
+    /**
+     * BlockingQueue extends Queue
+     *
+     * 抛异常系列：
+         *  add(E e);
+         *  remove();
+         *  element();
+     *
+     *  特定值系列：
+     *      offer(E e);
+     *      poll();
+     *      peek();
+     *
+     *  阻塞系列
+     *  void put(E e) throws InterruptedException;
+     *  E take() throws InterruptedException;
+     *
+     *  超时系列
+     *  boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException;
+     *  E poll(long timeout, TimeUnit unit) throws InterruptedException;
+     *
+     * 其它方法
+     * int remainingCapacity(); //剩余容量
+    * boolean contains(object o); //是否包含给定元素
+    * boolean remove(0bject o); //移除与之匹配的第一个元素
+    * int drainTo(collection<? super E> c); //转移元素到给定集合，返回已转移的数量
+    * int drainTo(Collection<? super E> C, int maxElements); //限制最大转移数量
+     */
     private BlockingQueue<String> blockingQueue = null;
 
     public MyResource(BlockingQueue<String> blockingQueue) {

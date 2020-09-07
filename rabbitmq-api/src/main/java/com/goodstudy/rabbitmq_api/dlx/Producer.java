@@ -17,7 +17,7 @@ public class Producer {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("127.0.0.1");
+        connectionFactory.setHost("123.57.54.123");
         connectionFactory.setPort(5672);
         connectionFactory.setVirtualHost("/");
 

@@ -31,7 +31,7 @@ public class Producer4FanoutExchange {
 
         for (int i = 0; i < 10; i++) {
             String msg = "Hello World RabbitMQ 4 FANOUT Exchange Message ...";
-            channel.basicPublish(exchangeName,routeingKey , null , msg.getBytes());
+            channel.basicPublish(exchangeName, routeingKey, null, msg.getBytes());
         }
 
         channel.close();

@@ -33,7 +33,7 @@ public class Producer {
         // 发送正确的routingKey,并设置mandatory为false(默认)
         // Mandatory:如果为true，则监听器会接收到路由不可达的消息，然后进行后续处理，如果为false,那么broker端自动删除该消息!
 //        channel.basicPublish(exchangeName, routingKey, false,null, msg.getBytes());
-        channel.basicPublish(exchangeName, routingKeyError, true,null, msg.getBytes());
+        channel.basicPublish(exchangeName, routingKeyError, true, null, msg.getBytes());
 
         channel.addReturnListener(new ReturnListener() {
             @Override

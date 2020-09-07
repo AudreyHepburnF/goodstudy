@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
  * # : 匹配一个或者多个词
  * * : 匹配一个
  * ecg ：  user.#   可以匹配：   user.topic1   、  user.topic2.zs
- *         user.*   可以匹配：   user.topic1
+ * user.*   可以匹配：   user.topic1
  */
 public class Producer4TopicExchange {
 

@@ -31,14 +31,14 @@ public class Consumer {
         String queueName = "test_confirm_queue";
 
         channel.exchangeDeclare(exchangeName, "topic", true, false, false, null);
-        channel.queueDeclare(queueName , true , false , false , null);
+        channel.queueDeclare(queueName, true, false, false, null);
         channel.queueBind(queueName, exchangeName, routingKey);
 
         QueueingConsumer consumer = new QueueingConsumer(channel);
 
         channel.basicConsume(queueName, true, consumer);
 
-        while(true){
+        while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String body = new String(delivery.getBody());
             System.err.println("消费端: " + body);

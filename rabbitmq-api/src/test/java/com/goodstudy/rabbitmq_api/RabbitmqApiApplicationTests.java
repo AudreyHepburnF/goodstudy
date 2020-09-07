@@ -13,4 +13,8 @@ public class RabbitmqApiApplicationTests {
     public void contextLoads() {
     }
 
+    @Test
+    public void test1(){
+
+    }
 }

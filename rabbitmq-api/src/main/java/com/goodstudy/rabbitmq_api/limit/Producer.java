@@ -10,7 +10,7 @@ import com.rabbitmq.client.ConnectionFactory;
  * @description 自定义消费端限流  生产者代码
  */
 public class Producer {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("127.0.0.1");
         connectionFactory.setPort(5672);
@@ -24,7 +24,7 @@ public class Producer {
 
         String msg = "Hello RabbitMQ QOS Message";
 
-        for(int i =0; i<5; i ++){
+        for (int i = 0; i < 5; i++) {
             channel.basicPublish(exchange, routingKey, true, null, msg.getBytes());
         }
     }

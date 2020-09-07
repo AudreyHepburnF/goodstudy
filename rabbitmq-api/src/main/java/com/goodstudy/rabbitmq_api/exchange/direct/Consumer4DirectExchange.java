@@ -33,14 +33,14 @@ public class Consumer4DirectExchange {
         String routeingKey = "test.direct";
         String queueName = "test_direct_queue";
         String exchangeType = "direct";
-        channel.exchangeDeclare(exchangeName , exchangeType , true , false , false , null);
+        channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
 
         channel.queueDeclare(queueName, true, false, false, null);
 
         channel.queueBind(queueName, exchangeName, routeingKey);
         QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
         channel.basicConsume(queueName, true, queueingConsumer);
-        while(true){
+        while (true) {
             QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
             String msg = new String(delivery.getBody());
             System.out.println("direct exchange 收到消息：" + msg);

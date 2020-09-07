@@ -28,7 +28,7 @@ public class Producer {
         // 3. 通过connectionFactory创建一个Channel
         Channel channel = connection.createChannel();
 
-        Map<String , Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("mykey1", "111");
         map.put("mykey2", "222");
 
@@ -47,7 +47,7 @@ public class Producer {
         // 4. 通过Channel发送数据
         for (int i = 0; i < 5; i++) {
             String msg = "Hello RabbitMQ";
-            channel.basicPublish("", "test001", properties, msg.getBytes() );
+            channel.basicPublish("", "test001", properties, msg.getBytes());
         }
         channel.close();
         connection.close();

@@ -1,4 +1,4 @@
-package com.goodstudy.rabbitmq_api.limit;
+package com.goodstudy.rabbitmq_api.ack;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -18,16 +18,15 @@ public class Consumer {
 
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
-        String exchangeName = "test_qos_exchange";
-        String queueName = "test_qos_queue";
-        String routingKey = "qos.#";
+        String exchangeName = "test_ack_exchange";
+        String queueName = "test_ack_queue";
+        String routingKey = "ack.#";
         //声明和绑定
         channel.exchangeDeclare(exchangeName, "topic", true, false, null);
         channel.queueDeclare(queueName, true, false, false, null);
         channel.queueBind(queueName, exchangeName, routingKey);
 
         //1 限流方式  第一件事就是 autoAck设置为 false,每次给消费者推送一个消息
-        channel.basicQos(0, 1, false);
         channel.basicConsume(queueName, false, new MyConsumer(channel));
 
     }

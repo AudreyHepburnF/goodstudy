@@ -11,7 +11,11 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author congyaozhu
  * @date 2020-06-20 10:23
- * @description
+ * @description 使用消息确认模式发送一条消息
+ * 交换机：test_confirm_exchange
+ * 路由key：confirm.save
+ * channel.addConfirmListener(new ConfirmListener() {
+ * }
  */
 public class Producer {
 
@@ -38,6 +42,12 @@ public class Producer {
         channel.basicPublish(exchangeName, routingKey, null, msg.getBytes());
 
         channel.addConfirmListener(new ConfirmListener() {
+            /**
+             * deliveryTag : 消息唯一标签
+             * @param deliveryTag
+             * @param multiple
+             * @throws IOException
+             */
             @Override
             public void handleAck(long deliveryTag, boolean multiple) throws IOException {
                 System.out.println("消息确认后执行的内容");

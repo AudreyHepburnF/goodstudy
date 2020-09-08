@@ -24,7 +24,9 @@ public class Producer {
         Channel channel = connection.createChannel();
 
         String exchangeName = "test_return_exchange";
+        // 正确的路由key
         String routingKey = "return.save";
+        // 错误的路由key
         String routingKeyError = "abc.save";
 
         //5 发送一条消息
@@ -36,6 +38,15 @@ public class Producer {
         channel.basicPublish(exchangeName, routingKeyError, true, null, msg.getBytes());
 
         channel.addReturnListener(new ReturnListener() {
+            /**
+             * @param replyCode 错误码
+             * @param replyText 错误信息
+             * @param exchange  交换机名称
+             * @param routingKey 路由key名称
+             * @param properties 配置信息
+             * @param body 消息体
+             * @throws IOException
+             */
             @Override
             public void handleReturn(int replyCode, String replyText, String exchange, String routingKey, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 System.err.println("---------handle  return----------");

@@ -13,6 +13,10 @@ import java.util.concurrent.TimeoutException;
  * @author congyaozhu
  * @date 2020-06-20 10:23
  * @description 死信队列  消费者
+ * 产生死信消息的几个条件：
+ *      1. 消息被拒绝(basic.reject/ basic.nack)并且requeue=false
+ *      2. 消息TTL过期
+ *      3. 队列达到最大长度
  */
 public class Consumer {
 
@@ -25,14 +29,15 @@ public class Consumer {
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
 
-
         String exchangeName = "test_dlx_exchange";
         String routingKey = "dlx.#";
         String queueName = "test_dlx_queue";
 
         Map<String, Object> arguments = new HashMap<>();
+        // 设置死信队列必须参数
         arguments.put("x-dead-letter-exchange", "dlx.exchange");
         channel.exchangeDeclare(exchangeName, "topic", true, false, null);
+
         //这个agruments属性，要设置到声明队列上
         channel.queueDeclare(queueName, true, false, false, arguments);
         channel.queueBind(queueName, exchangeName, routingKey);

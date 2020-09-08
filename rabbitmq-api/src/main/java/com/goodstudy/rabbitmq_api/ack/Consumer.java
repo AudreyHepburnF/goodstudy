@@ -26,7 +26,6 @@ public class Consumer {
         channel.queueDeclare(queueName, true, false, false, null);
         channel.queueBind(queueName, exchangeName, routingKey);
 
-        //1 限流方式  第一件事就是 autoAck设置为 false,每次给消费者推送一个消息
         channel.basicConsume(queueName, false, new MyConsumer(channel));
 
     }

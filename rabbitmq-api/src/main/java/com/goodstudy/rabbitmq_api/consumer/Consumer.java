@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author congyaozhu
  * @date 2020-06-20 10:23
- * @description
+ * @description 使用自定义消费者类来进行消费数据
  */
 public class Consumer {
 

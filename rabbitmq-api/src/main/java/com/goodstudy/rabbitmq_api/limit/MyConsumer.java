@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * @author congyaozhu
  * @date 2020-06-22 23:22
- * @description
+ * @description 自定义消费者，进行手动确认消息
  */
 public class MyConsumer extends DefaultConsumer {
 
@@ -29,7 +29,7 @@ public class MyConsumer extends DefaultConsumer {
         System.err.println("properties: " + properties);
         System.err.println("body: " + new String(body));
 
-        //确认消息的方法，回调成功以后再执行下一条，表示这条消息我已经处理完了，你可以给我下一条了。false表示不批量签收
+        //确认消息的方法，回调成功以后再执行下一条，表示这条消息我已经处理完了，你可以给我下一条了。multiple：false表示不批量签收
         channel.basicAck(envelope.getDeliveryTag(), false);
 
     }

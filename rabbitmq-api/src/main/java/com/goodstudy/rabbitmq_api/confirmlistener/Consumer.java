@@ -11,7 +11,10 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author congyaozhu
  * @date 2020-06-20 10:23
- * @description
+ * @description 消费者消费消息
+ * 交换机：test_confirm_exchange
+ * 路由key：confirm.#
+ * 队列名称：test_confirm_queue
  */
 public class Consumer {
 
@@ -30,10 +33,12 @@ public class Consumer {
         String routingKey = "confirm.#";
         String queueName = "test_confirm_queue";
 
+        // 声明交换机和队列 然后进行绑定设置，最后指定路由key
         channel.exchangeDeclare(exchangeName, "topic", true, false, false, null);
         channel.queueDeclare(queueName, true, false, false, null);
         channel.queueBind(queueName, exchangeName, routingKey);
 
+        // 创建消费者
         QueueingConsumer consumer = new QueueingConsumer(channel);
 
         channel.basicConsume(queueName, true, consumer);

@@ -25,6 +25,7 @@
         <module>interview</module>
         <module>spring-cloud-config-client</module>
         <module>spring-cloud-config-server</module>
+        <module>spring-boot-study</module>
         <module>test-docker</module>
         <module>demo-spring</module>
         <module>dubbo-interface-study</module>
@@ -34,6 +35,15 @@
         <module>dubbo-consumer-study</module>
         <module>spring-annotation</module>
         <module>tuling-jvm</module>
+        <module>rabbitmq-api</module>
+        <module>rabbitmq-spring</module>
+        <module>read-write</module>
+        <module>admin-client</module>
+        <module>admin-server</module>
+        <module>rabbitmq-springboot-producer</module>
+        <module>rabbitmq-springboot-consumer</module>
+        <module>rabbitmq-springcloudstream-consumer</module>
+        <module>rabbitmq-springcloudstream-producer</module>
     </modules>
     <description>Demo project for Spring Boot</description>
     <properties>

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.personalstudy.springcloud</groupId>
-    <artifactId>order</artifactId>
+    <artifactId>eureka-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order</name>
+    <name>eureka-order</name>
     <description>order 模块</description>
 
     <properties>

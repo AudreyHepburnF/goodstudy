@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.lambda;
+package com.personalstudy.goodstudy.java8;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

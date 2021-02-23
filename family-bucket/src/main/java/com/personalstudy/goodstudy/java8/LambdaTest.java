@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.lambda;
+package com.personalstudy.goodstudy.java8;
 
 import com.personalstudy.goodstudy.base.Person;
 import com.personalstudy.goodstudy.base.User;
@@ -145,6 +145,7 @@ public class LambdaTest {
 
         System.out.println("****************************");
 
+        // 类::实例方法名
         BiPredicate<String , String> biPredicate = String::equals;
         System.out.println(biPredicate.test("abc", "abd"));
     }
@@ -168,11 +169,17 @@ public class LambdaTest {
     public void test8() {
         Person person = new Person();
         person.setName("李四");
+        // 使用无参构造
         Function<Person , String> fun = Person::getName;
         System.out.println(fun.apply(person));
     }
 
-    // 构造器引用
+    /**
+     * 构造器引用
+     *   格式：
+     *     ClassName::new
+     *   注意: 需要调用的构造器的参数列表要与函数式接口中抽象方法的参数列表保持一致
+     */
     @Test
     public void test9(){
         Supplier<Person> sup = Person::new;
@@ -184,10 +191,15 @@ public class LambdaTest {
         System.out.println(fun.apply(15, "张三"));
     }
 
-    // 数组引用
+    /**
+     * 数组引用
+     *   Type[]::new
+     *
+     *
+     */
     @Test
     public void test10(){
         Function<Integer , String[]> fun = String[] :: new;
-        System.out.println(Arrays.toString(fun.apply(5)));
+        System.out.println("数组长度：" + fun.apply(5).length);
     }
 }

@@ -1,4 +1,4 @@
-package com.personalstudy.goodstudy.lambda;
+package com.personalstudy.goodstudy.java8;
 
 import org.junit.Test;
 
@@ -54,12 +54,7 @@ public class TestSimpleDateFormat {
     public void testSimpleDateFormatNotSafe() throws ExecutionException, InterruptedException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
-        Callable<Date> task = new Callable<Date>() {
-            @Override
-            public Date call() throws Exception {
-                return sdf.parse("20200201");
-            }
-        };
+        Callable<Date> task = () -> sdf.parse("20200201");
         ExecutorService pool = Executors.newFixedThreadPool(10);
 
         List<Future<Date>> list = new ArrayList<>();
